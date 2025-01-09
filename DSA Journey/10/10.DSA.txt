@@ -1,0 +1,35 @@
+def check_condition(lst,n,s,x):
+    sum_ = 0 
+    for i in lst:
+        element = int(i)
+        quotient = element // x 
+        sum_ += quotient
+    if sum_ <= s: 
+        return True 
+    return False
+        
+def search_of_x(lst,n,s):
+    start = 1
+    end = (2 ** 32) - 1 
+    while start < end:
+        mid = (start + end ) // 2 
+        if check_condition(lst,n,s,mid):
+            end = mid
+        else: 
+            start = mid + 1
+    return end
+
+
+
+
+
+n,s = input().split()
+n = int(n)
+s = int(s)
+lst = input().split()
+result = search_of_x(lst,n,s)
+print(result)
+
+#O(nlogn)
+
+

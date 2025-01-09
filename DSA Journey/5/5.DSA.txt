@@ -1,0 +1,50 @@
+def upgrades_possible(cooldown_times, m, k,mid):
+    no_of_upgrades = 0
+    antique_items = 0
+    for i in range(len(cooldown_times)):
+        if cooldown_times[i] <= mid:
+            antique_items += 1 
+        else: 
+            antique_items = 0 
+        if antique_items == k:
+            no_of_upgrades += 1 
+            antique_items = 0
+    if no_of_upgrades >= m:
+        return True 
+    return False
+
+def minimum_time_to_wait(cooldown_times,num_upgrades,items_per_upgrade): #function to find the minimum time to wait to make m upgrades
+    if m * k > len(cooldown_times): 
+        return -1 
+    
+    start = 0 
+    end = 2**31 - 1
+    while start < end: 
+        mid = start + (end - start) // 2
+        if upgrades_possible(cooldown_times, num_upgrades, items_per_upgrade, mid):
+            end = mid
+        else: 
+            start = mid + 1
+            
+    return end
+ 
+
+
+
+
+
+
+
+#getting all the input and converting into appropriate form
+n = int(input())
+lst = input().split()
+for i in range(n):
+    lst[i] = int(lst[i])
+m,k = input().split()
+m = int(m)
+k = int(k) 
+
+#calling the function and printing the result
+result = minimum_time_to_wait(lst,m,k)
+print(result)
+    

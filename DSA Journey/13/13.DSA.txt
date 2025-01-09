@@ -1,0 +1,58 @@
+def spiral_matrix(matrix,m,n):
+    row_min = 0
+    row_max = m
+    col_min = 0
+    col_max = n
+    elements_complete = 0
+    left = False
+    right = True
+    down = False 
+    up = False 
+    condition = True
+    while elements_complete < (m*n): 
+        if right: 
+            for i in range(col_max-col_min):
+                elements_complete += 1
+                print(matrix[row_min][col_min + i ] , end = " ")
+            row_min += 1
+            right = False
+            down = True
+
+    
+        elif down :
+            for i in range(row_max-row_min):
+                elements_complete += 1
+                print(matrix [row_min + i][col_max-1],end = " ") 
+            col_max -= 1 
+            left = True 
+            down = False
+            
+            
+        elif left: 
+            for i in range(col_max - col_min):
+                elements_complete += 1
+                print(matrix[row_max-1][col_max-i-1] , end = " ")
+            row_max -= 1
+            left = False 
+            up = True
+            
+        elif up: 
+            for i in range(row_max-row_min):
+                elements_complete += 1
+                print(matrix[row_max-i-1][col_min],end = " ")
+            col_min += 1 
+            up = False
+            right = True
+            condition = False
+    
+m,n = input().split()
+m = int(m)
+n = int(n)
+matrix = []
+for i in range(m):
+    row = input().split()
+    for i in range(len(row)):
+        row[i] = int(row[i])
+    matrix.append(row)
+    
+spiral_matrix(matrix,m,n)

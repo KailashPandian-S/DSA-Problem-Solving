@@ -1,0 +1,83 @@
+def convert_to_int(lst): 
+    new_lst = []
+    for i in lst: 
+        new_lst.append(int(i))
+    return new_lst
+
+
+def print_diagonal_traversal(matrix,m,n):
+    i = 0
+    j = 0
+    upward = True
+    for k in range(m+n-2): 
+        if k == 0: 
+            print(matrix[i][j],end =" ")
+            j += 1 
+            print(matrix[i][j],end = " ")
+            
+        else: 
+            if upward: 
+                if k < n: 
+                    while i > 0: 
+                        i -= 1 
+                        j += 1 
+                        print(matrix[i][j],end = " ")
+                else: 
+                    while i > (k-n+1): 
+                        i -= 1 
+                        j += 1 
+                        print(matrix[i][j],end = " ")
+            
+                if j < (n-1): 
+                    j += 1 
+                else: 
+                    i += 1 
+                print(matrix[i][j],end = " ")
+                
+            else:
+                
+                if k < m: 
+                    while j > 0:
+                        i += 1 
+                        j -= 1 
+                        print(matrix[i][j], end = " ")
+                        
+                else: 
+                    while j > k-m+1: 
+                        i += 1 
+                        j -= 1 
+                        print(matrix[i][j] , end = " ")
+                
+                if i < (m-1): 
+                    i += 1 
+                else: 
+                    j += 1
+                print(matrix[i][j] , end = " ")
+        if upward: 
+            upward = False
+        else: 
+            upward = True
+
+
+
+
+
+   
+if "__main__" == __name__:
+   m,n = input().split()
+   m = int(m)
+   n = int(n)
+   matrix = []
+   for i in range(m): 
+       row = input().split()
+       row = convert_to_int(row)
+       matrix.append(row)
+       
+if m == 1 or n == 1: 
+    for i in matrix:
+        for j in i: 
+            print(j,end = " ") 
+else:
+   print_diagonal_traversal(matrix,m,n)
+       
+           

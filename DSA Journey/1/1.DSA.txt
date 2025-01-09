@@ -1,0 +1,31 @@
+def convert_to_int(lst): 
+    lst_new = []
+    for i in lst:
+        lst_new += [int(i)]
+    return lst_new 
+    
+def search(lst,k): 
+    start = 0 
+    end = len(lst) - 1 
+    mid =(start + end) // 2 
+    while start <= end : 
+        if k == lst[mid]: 
+            return mid 
+        elif k > lst[mid]: 
+            start = mid + 1 
+            mid = (start + end) // 2 
+        elif k < lst[mid]: 
+            end = mid - 1 
+            mid = (start + end) // 2 
+    return -1
+        
+
+
+
+
+n = int(input())
+lst_a = input().split()
+k = int(input())
+lst_a = convert_to_int(lst_a)
+result = search(lst_a,k)
+print(result)

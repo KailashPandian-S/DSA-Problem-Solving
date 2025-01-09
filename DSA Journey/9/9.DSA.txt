@@ -1,0 +1,29 @@
+def solution(n,lst,d): 
+    new_lst = []
+    for i in lst :
+        new_lst += [int(i)]
+    lst = new_lst
+    def possible(lst,d,k):
+        s = 0
+        for i in lst:
+              curr = (i-1) //k + 1
+              s += curr
+        return s <= d
+    
+    start = 1 
+    end = int(1e9)
+    while start < end: 
+        mid = (start + end ) // 2
+        if not possible(lst,d,mid): 
+            start = mid + 1 
+        else:
+            end = mid
+            
+    return end
+    
+    
+n = int(input())
+lst= input().split()
+d = int(input())
+result = solution(n, lst, d)
+print(result)

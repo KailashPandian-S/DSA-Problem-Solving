@@ -1,0 +1,75 @@
+def convert_to_int(arr,n):
+    for i in range(n):
+        arr[i] = int(arr[i])
+    return arr 
+        
+def find_k_indices(arr,n,k):
+     start = 0
+     end = n-1
+     if n == 0: 
+         print(-1)
+         return
+     if len(arr) == 1 and arr[0] == k:
+         print(0, 0) 
+         return ()
+     elif len(arr) == 1:
+        print(-1)
+        return 
+     k_index = None
+     while(start<=end):
+         mid = (start + 1 + end) // 2
+         
+         if k == arr[mid]:
+             k_index = mid
+             break
+         elif k < arr[mid]: 
+             end = mid - 1
+         else: 
+             start = mid + 1
+             
+     if k_index is None:
+         print(-1)
+         return ()
+     else: 
+        starting_range = find_starting(arr,start,mid,k)
+        print(starting_range,end=" ")
+        ending_range = find_ending(arr,mid,end,k)
+        print(ending_range)
+        return
+
+def find_starting(arr,start,end,k):
+    while start <= end:
+        mid = (start+1+end) // 2
+        if arr[start] == k: 
+            return start 
+        elif arr[start+1] == k: 
+            return (start+1)
+        elif arr[mid] < k: 
+            start = mid + 1 
+        elif arr[mid] == k: 
+            starting_value = find_starting(arr,start,mid,k)
+            return starting_value
+
+
+def find_ending(arr,start,end,k):
+    while start <= end:
+        mid = (start+end+1) // 2
+        if arr[end] == k:
+            return end 
+        elif arr[end - 1] == k:
+            return end - 1 
+        elif arr[mid] > k: 
+            end = mid - 1 
+        elif arr[mid] == k: 
+            ending_value = find_ending(arr,mid,end,k)
+            return ending_value
+
+
+
+n = int(input())
+arr = input().split()
+k = int(input())
+arr = convert_to_int(arr,n)
+find_k_indices(arr,n,k)
+
+

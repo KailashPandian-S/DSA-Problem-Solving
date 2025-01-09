@@ -1,0 +1,27 @@
+def convert_to_int(lst): 
+    new_lst = []
+    for i in lst: 
+        new_lst += [int(i)]
+    return new_lst 
+    
+def find_elements(lst): 
+    if lst[0] <= lst[-1]: 
+        return lst[0],lst[-1]
+        
+    for i in range(len(lst)-1,0,-1): 
+        if lst[i-1] > lst[i]: 
+            return lst[i] , lst[i-1]
+        
+
+
+
+
+
+
+
+n = int(input())
+lst = input().split()
+lst = convert_to_int(lst)
+mini,maxi = find_elements(lst) 
+print(mini,end = " ")
+print(maxi,end = " ")

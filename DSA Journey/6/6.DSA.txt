@@ -1,0 +1,18 @@
+def rotate_array(lst,k): 
+    if len(lst) == k : 
+        return lst 
+    else: 
+        k = k % len(lst)
+        first_part = lst[-k:]
+        last_part = lst[:-k] 
+        return (first_part+last_part)
+    
+    
+    
+n = int(input())
+lst = input().split()
+k = int(input())
+
+result = rotate_array(lst,k)
+result = " ".join(result)
+print(result)

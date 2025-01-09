@@ -1,0 +1,14 @@
+def print_pattern(n): 
+    star_count = 1 
+    for i in range(n): 
+        spaces = " " * (n-i-1)
+        star = "*" * star_count
+        star_count += 2  
+        print(spaces,end ="")
+        print(star)
+
+
+
+
+n = int(input())
+print_pattern(n)

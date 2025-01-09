@@ -1,0 +1,11 @@
+n = int(input())
+lst = input().split()
+peak = -1 
+peak_index = -1 
+for i in range(len(lst)): 
+    element = int(lst[i])
+    if element >= peak: 
+        peak = element 
+        peak_index = i
+        
+print(peak_index)
